@@ -1,13 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-// import LoginPage from "../Login";
-// import CountryInfo from "../CountryInfo";
 
 const Root = () => {
   return (
-    <div>
+    <>
+      <h1>Welcome To weather App!</h1>
       <Outlet />
-    </div>
+      <p>Website is made by @Aashu</p>
+    </>
   );
 };
 
