@@ -3,15 +3,20 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import Root from "../Components/Layout/Root";
-import LoginPage from "../Components/Login";
-import CountryInfo from "../Components/CountryInfo";
+import Root from "../Layout/Root";
+import CountryInfo from "../pages/CountryInfo";
+import CapitalWeather from "../pages/CapitalWeather";
+import Home from "../pages/Home";
+import Login from "../Auth/Login";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      <Route path="LoginPage" element={<LoginPage />} />
-      <Route path="CountryInfo" element={<CountryInfo />} />
+      <Route path="" element={<Login />} />
+      <Route path="home" element={<Home />} />
+      <Route path="country-info/" element={<CountryInfo />}>
+        <Route path="capital-weather" element={<CapitalWeather />} />
+      </Route>
     </Route>
   )
 );
