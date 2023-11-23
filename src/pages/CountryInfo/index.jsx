@@ -22,7 +22,7 @@ const CountryInfo = () => {
     }
   };
   const handleSubmit = () => {
-    navigate(`/capital-weather`);
+    navigate(`/country-info/capital-weather`);
   };
 
   useEffect(() => {
@@ -55,6 +55,7 @@ const CountryInfo = () => {
 
             <br />
             <button onClick={() => handleSubmit()}>Capital Weather</button>
+
             <br />
             <br />
           </div>
