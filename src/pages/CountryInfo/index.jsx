@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import "./countryInfo.css";
 
 const CountryInfo = () => {
   const location = useLocation();
@@ -33,11 +34,12 @@ const CountryInfo = () => {
   }
 
   return (
-    <div>
+    <div className="country_info">
       {countryData?.map(({ name, capital }, i) => {
         return (
-          <div key={i}>
-            {name?.common}
+          <div key={i} className="country_info_card">
+            <p>Country Name: {name?.common}</p>
+
             <br />
             <button>Capital Weather</button>
             <br />

@@ -1,12 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-
+import "../pages/Home/home.css";
+import "../pages/CountryInfo/countryInfo.css";
 const Root = () => {
   return (
     <>
-      <h1>Welcome To weather App!</h1>
-      <Outlet />
-      <p>Website is made by @Aashu</p>
+      <header className="header">Welcome To weather App!</header>
+      <div className="main_container">
+        <Outlet />
+      </div>
+      <footer className="footer">Website is made by @Aashu</footer>
     </>
   );
 };

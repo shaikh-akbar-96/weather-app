@@ -1,5 +1,6 @@
 import { useState } from "react";
 // import "./LoginPage.css";
+import "./home.css";
 import { useNavigate } from "react-router-dom/dist";
 const Home = () => {
   const [input, setInput] = useState("");
@@ -10,13 +11,18 @@ const Home = () => {
     setInput(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     navigate(`/country-info?country_name=${input}`);
+  };
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
   };
 
   return (
     <>
-      <div className="Login">
+      <div className="login">
         <div>
           <input
             type="text"
@@ -31,6 +37,7 @@ const Home = () => {
             className="button"
             type="submit"
             onClick={() => handleSubmit()}
+            onKeyDown={() => handleKeyPress()}
             disabled={!input}
           >
             submit
