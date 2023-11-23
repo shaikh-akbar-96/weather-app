@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./countryInfo.css";
 
 const CountryInfo = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const countryName = new URLSearchParams(location.search).get("country_name");
   const [countryData, setCountryData] = useState(null);
@@ -20,6 +21,9 @@ const CountryInfo = () => {
       setLoading(false);
     }
   };
+  const handleSubmit = () => {
+    navigate(`/capital-weather`);
+  };
 
   useEffect(() => {
     // Ensure that countryName is not null before calling getCountryData
@@ -35,13 +39,22 @@ const CountryInfo = () => {
 
   return (
     <div className="country_info">
-      {countryData?.map(({ name, capital }, i) => {
+      {countryData?.map(({ name, capital, population, latlng, flags }, i) => {
         return (
           <div key={i} className="country_info_card">
             <p>Country Name: {name?.common}</p>
+            <p>Capital: {capital[0]}</p>
+            <p>Population: {population}</p>
+            <p>Lattitude: {latlng[0]}</p>
+            <p>Longitude: {latlng[1]}</p>
+            <img
+              src={flags?.png}
+              alt={`Flag of ${name?.common}`}
+              style={{ width: "100px", height: "65px" }}
+            />
 
             <br />
-            <button>Capital Weather</button>
+            <button onClick={() => handleSubmit()}>Capital Weather</button>
             <br />
             <br />
           </div>
