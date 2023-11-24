@@ -1,40 +1,45 @@
-import { useState } from "react";
-// import "./LoginPage.css";
-import { useNavigate } from "react-router-dom/dist";
-const Home = () => {
-  const [input, setInput] = useState("");
+import { useContext } from "react";
+import "./home.css";
+import { NavLink, useNavigate } from "react-router-dom/dist";
+import { AppContext } from "../../context/AppContext";
+import Button from "../../Components/Button";
 
+const Home = () => {
+  const { countryName, setCountryName } = useContext(AppContext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setInput(e.target.value);
+    setCountryName(e.target.value);
   };
 
-  const handleSubmit = () => {
-    navigate(`/country-info?country_name=${input}`);
+  const handleSubmit = (e) => {
+    navigate(`country`);
   };
+  // const handleKeyPress = (e) => {
+  //   if (e.key === "Enter") {
+  //     handleSubmit();
+  //   }
+  // };
 
   return (
     <>
-      <div className="Login">
+      <div className="login">
         <div>
           <input
             type="text"
             placeholder="Enter Country"
             onChange={handleChange}
             className="Input"
-            value={input}
+            value={countryName}
           />
         </div>
         <div>
-          <button
-            className="button"
-            type="submit"
-            onClick={() => handleSubmit()}
-            disabled={!input}
-          >
-            submit
-          </button>
+        <NavLink to="info">country_info</NavLink>
+          {/* <Button
+            value={"submit"}
+            handleClick={handleSubmit}
+            isDisabled={!countryName}
+          /> */}
         </div>
       </div>
     </>

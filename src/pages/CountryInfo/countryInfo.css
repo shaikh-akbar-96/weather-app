@@ -1,0 +1,23 @@
+.country_info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 100%;
+}
+
+.main_container {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.country_info_card {
+  width: 25%;
+  height: auto;
+  /* border: 2px solid black; */
+  margin: 2.5%;
+  padding: 1rem;
+}

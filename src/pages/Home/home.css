@@ -1,0 +1,39 @@
+.Input {
+  width: 100%;
+  text-align: center;
+  height: 2.5rem;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+
+.button {
+  /* width: 100%; */
+  border-radius: 50px;
+}
+
+.header,
+.footer {
+  background-color: black;
+  color: white;
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer {
+  background-color: grey;
+  position: fixed;
+  bottom: 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+}
+
+.loginBtn {
+  min-width: 4rem;
+  height: 25px;
+}
