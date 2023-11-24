@@ -1,35 +1,27 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./countryInfo.css";
+import { getCountryData } from "../../utils/helper";
+import { AppContext } from "../../context/AppContext";
+import Button from "../../Components/Button";
 
 const CountryInfo = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const countryName = new URLSearchParams(location.search).get("country_name");
+  const { countryName } = useContext(AppContext);
+
   const [countryData, setCountryData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const getCountryData = async (country_name) => {
-    const Api_Url = `https://restcountries.com/v3.1/name/${country_name}`;
-    try {
-      const { data } = await axios.get(Api_Url);
-      setCountryData(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
   const handleSubmit = () => {
-    navigate(`/country-info/capital-weather`);
+    navigate("capital-weather");
   };
 
   useEffect(() => {
     // Ensure that countryName is not null before calling getCountryData
     if (countryName) {
       setLoading(true);
-      getCountryData(countryName);
+      // getCountryData is a async function that fetch coutries based on user input
+      getCountryData(countryName, setCountryData, setLoading);
     }
   }, [countryName]);
 
@@ -54,8 +46,11 @@ const CountryInfo = () => {
             />
 
             <br />
-            <button onClick={() => handleSubmit()}>Capital Weather</button>
-
+            <Button
+              handleClick={handleSubmit}
+              value={"Capital Weather"}
+              isDisabled={!countryName}
+            />
             <br />
             <br />
           </div>

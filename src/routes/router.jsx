@@ -8,16 +8,20 @@ import CountryInfo from "../pages/CountryInfo";
 import CapitalWeather from "../pages/CapitalWeather";
 import Home from "../pages/Home";
 import Login from "../Auth/Login";
+import CountryLayout from "../Layout/CountryLayout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />}>
-      <Route path="" element={<Login />} />
-      <Route path="home" element={<Home />} />
-      <Route path="country-info/" element={<CountryInfo />}>
-        <Route path="capital-weather" element={<CapitalWeather />} />
+    <>
+      <Route element={<Root />}>
+        <Route index element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="country"  element={<CountryLayout />}>
+          <Route path="info" element={<CountryInfo />} />
+          <Route path="capital-weather" element={<CapitalWeather />} />
+        </Route>
       </Route>
-    </Route>
+    </>
   )
 );
 
