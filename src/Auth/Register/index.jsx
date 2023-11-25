@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
   const naviaget = useNavigate();
 
+  // for check pull request
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Register");
