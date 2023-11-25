@@ -4,17 +4,18 @@ import "./countryInfo.css";
 import { getCountryData } from "../../utils/helper";
 import { AppContext } from "../../context/AppContext";
 import Button from "../../Components/Button";
+import Loading from "../../Components/Loading";
 
 const CountryInfo = () => {
   const navigate = useNavigate();
-  const { countryName } = useContext(AppContext);
-
-  const [countryData, setCountryData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  const handleSubmit = () => {
-    navigate("capital-weather");
-  };
+  const {
+    countryName,
+    loading,
+    setLoading,
+    countryData,
+    setCountryData,
+    setCapitalName,
+  } = useContext(AppContext);
 
   useEffect(() => {
     // Ensure that countryName is not null before calling getCountryData
@@ -23,19 +24,25 @@ const CountryInfo = () => {
       // getCountryData is a async function that fetch coutries based on user input
       getCountryData(countryName, setCountryData, setLoading);
     }
-  }, [countryName]);
+  }, []);
+
+  const showCapitalWeather = (capital) => {
+    const capital_name = capital ? capital[0] : "delhi";
+    setCapitalName(capital_name);
+    navigate("capital-weather"); 
+  };
 
   if (loading) {
-    return <div>Loading Data...</div>;
+    return <Loading />;
   }
 
   return (
-    <div className="country_info">
+    <div className="country_info_container">
       {countryData?.map(({ name, capital, population, latlng, flags }, i) => {
         return (
           <div key={i} className="country_info_card">
             <p>Country Name: {name?.common}</p>
-            <p>Capital: {capital[0]}</p>
+            <p>Capital: {capital ? capital[0] : "not"}</p>
             <p>Population: {population}</p>
             <p>Lattitude: {latlng[0]}</p>
             <p>Longitude: {latlng[1]}</p>
@@ -44,10 +51,10 @@ const CountryInfo = () => {
               alt={`Flag of ${name?.common}`}
               style={{ width: "100px", height: "65px" }}
             />
-
+            <br />
             <br />
             <Button
-              handleClick={handleSubmit}
+              handleClick={() => showCapitalWeather(capital)}
               value={"Capital Weather"}
               isDisabled={!countryName}
             />
