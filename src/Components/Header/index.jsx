@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Button from "../Button";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
+import "../../pages/Home/home.scss";
 
 const Header = () => {
   const { user, setUser } = useContext(AppContext);
@@ -21,7 +22,10 @@ const Header = () => {
       <div className="header">
         <span>Welcome ! {user.userName}</span>
         {user.userName && (
-          <nav>
+          <nav
+            className="headerButton
+          "
+          >
             <Button
               value={"Home"}
               handleClick={navigateToHome}

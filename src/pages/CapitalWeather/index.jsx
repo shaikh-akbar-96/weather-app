@@ -31,14 +31,21 @@ const CapitalWeather = () => {
   return (
     <>
       <div className="capital_weather_container">
-        <p>Capital Temrature: {temp_f}</p>
+        <p>
+          <span className="capital_info">Capital Temrature:</span> {temp_f}
+        </p>
         <p>
           <span>
             <img src={icon} alt="weather-icon" />
           </span>
         </p>
-        <p>wind_kph: {wind_kph}</p>
-        <p>precip_mm: {precip_mm}</p>
+        <p>
+          <span className="capital_info">wind_kph:</span> {wind_kph}
+        </p>
+        <p>
+          <span className="capital_info">precip_mm: </span>
+          {precip_mm}
+        </p>
       </div>
     </>
   );

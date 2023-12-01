@@ -10,9 +10,9 @@
 }
 .country_info_card {
   width: 20%;
-  border: 2px solid black;
+  border: black;
   margin: 2.5%;
   padding: 10px;
-  border-radius: 1rem;
-  background-color: rgb(171, 238, 216);
+  /* border-radius: 1rem; */
+  background-color: rgb(246, 244, 244);
 }
