@@ -14,6 +14,7 @@ const Home = () => {
 
   const handleSubmit = () => {
     navigate("/country");
+    // CountryName("");
   };
 
   return (

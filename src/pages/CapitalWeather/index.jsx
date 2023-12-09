@@ -32,7 +32,7 @@ const CapitalWeather = () => {
     <>
       <div className="capital_weather_container">
         <p>
-          <span className="capital_info">Capital Temrature:</span> {temp_f}
+          <span className="capital_info">Capital Temprature:</span> {temp_f}
         </p>
         <p>
           <span>
